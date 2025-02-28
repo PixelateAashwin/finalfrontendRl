@@ -1,3 +1,64 @@
+/*import React, { useState } from "react"; // Import React and useState for managing state
+import { submitForm } from "./api";  // Import the submitForm function from api.js
+
+const CustomForm = () => {
+    // Define state to store form data (name, email, phone)
+    const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
+
+    // Function to handle input changes and update the state
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    // Function to handle form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent page reload on form submission
+        try {
+            const response = await submitForm(formData); // Send form data to the backend
+            console.log("Response from backend:", response); // Log the response from the backend
+        } catch (error) {
+            console.error("Submission failed:", error); // Log any errors if submission fails
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}> {//Form submission triggers handleSubmit }
+            <input 
+                type="text" 
+                name="name" 
+                onChange={handleChange}  // Calls handleChange when user types
+                placeholder="Name" 
+                required 
+            />
+            <input 
+                type="email" 
+                name="email" 
+                onChange={handleChange} 
+                placeholder="Email" 
+                required 
+            />
+            <input 
+                type="tel" 
+                name="phone" 
+                onChange={handleChange} 
+                placeholder="Phone" 
+                required 
+            />
+            <button type="submit">Submit</button> {/* Submit button to send data }
+        </form>
+    );
+};
+
+export default CustomForm; // Export component so it can be used in other parts of the app
+
+*/
+
+
+
+
+
+
+
 import { useState } from "react";
 
 export default function CustomForm() {
@@ -18,11 +79,11 @@ export default function CustomForm() {
         }
         
         try {
-            const response = await fetch("http://localhost:5050/submit", {
+            const response = await fetch("https://rl-sample-backend.onrender.com/submit", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData),
-            });
+              });
             const data = await response.json();
             
             if (response.ok) {
